@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>The Land of D3</title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <div id="impress">
+      <div id="title" class="step" data-x="0" data-y="0" data-scale="3">
+        <img src="img/land-of-d3.jpg"/>
+      </div>
+
+      <div id="bad-puns" class="step" data-x="0" data-y="0" data-scale="3">
+        <div class="warning" style="display:none">
+          WARNING:  MAY CONTAIN BAD PUNS AND STRETCHED METAPHORS.  PULL REQUESTS WELCOME.
+        </div>
+      </div>
+
+      <div id="opening" class="step" data-x="3000" data-y="3000" data-scale="4">
+        <img src="img/mesh.png"/>
+      </div>
+
+      <div id="guild" class="step" data-x="6000" data-y="8000" data-rotate="90" data-scale="5">
+        <p>In this land, there was a</p>
+        <strong>guild of builders</strong>
+      </div>
+
+      <div id="contraptions-canvas" class="step" data-x="6500" data-y="0" data-rotate="180" data-scale="5">
+        <img src="img/canvas.jpg"/>
+      </div>
+
+      <div id="contraptions-flash" class="step" data-x="3500" data-y="0" data-rotate="180" data-scale="5">
+        <img src="img/flash.jpg"/>
+      </div>
+
+      <div id="introducing-dominick" class="step" data-x="12000" data-y="3000" data-rotate="90" data-scale="5">
+        <img src="img/dominick.png"/>
+        <h1>DOMinick</h1>
+      </div>
+
+      <div id="the-inn" class="step" data-x="15000" data-y="3000" data-rotate="90" data-scale="5">
+        <img src="img/inn.jpg"/>
+      </div>
+
+      <div id="nvd3" class="step" data-x="18000" data-y="1000" data-rotate="90" data-scale="5">
+        <img src="img/hammer.jpg"/>
+      </div>
+
+      <div id="landscape" class="step" data-x="21000" data-y="3000" data-rotate="90" data-scale="5">
+        <img src="img/wireframe.jpg"/>
+      </div>
+
+      <div id="cliff" class="step" data-x="24000" data-y="4000" data-rotate="90" data-scale="5">
+        <div class="chart">
+        </div>
+      </div>
+
+      <div id="scale" class="step" data-x="27000" data-y="4000" data-rotate="90" data-scale="5">
+        <h1>Scale</h1>
+      </div>
+
+      <div id="scale-function-concept" class="step" data-x="30000" data-y="4000" data-rotate="90" data-scale="5">
+        <pre class="code">
+        function scale(domainMax, rangeMax) {
+          return function(inputValue) {
+            return (inputValue / domainMax) * rangeMax;
+          }
+        }
+
+        height = scale(1, 500);
+        height(0.5); // => 250
+        </pre>
+      </div>
+
+      <div id="not-d3-code" class="step" data-x="30000" data-y="4000" data-rotate="90" data-scale="5">
+        <div class="warning" style="display:none">
+          WARNING: NOT ACTUAL D3 CODE
+        </div>
+      </div>
+
+      <div id="scale-function-d3" class="step" data-x="33000" data-y="6000" data-rotate="90" data-scale="5">
+        <pre class="code">
+        height = d3.scale.linear().
+                   .domain([0, 1])
+                   .range([0, 500])
+
+        height(0.5); // => 250
+        </pre>
+      </div>
+
+      <div id="reverse-coordinates" class="step" data-x="36000" data-y="2100" data-rotate="180" data-scale="5">
+        <div class="chart">
+        </div>
+      </div>
+
+      <div id="reverse-scale" class="step" data-x="38000" data-y="5100" data-rotate="180" data-scale="5">
+        <pre class="code">height2 = height.range([500, 0])</pre>
+      </div>
+
+      <div id="event-handling" class="step" data-x="42000" data-y="21000" data-rotate="180" data-scale="5">
+        <pre class="code">
+<i>selection</i>
+  .on("mouseover", function(d, i) {
+    d3.select(this)
+      .attr("fill", "red");
+  })
+  .on("mouseout", function(d, i) {
+    d3.select(this)
+      .attr("fill", "green");
+  });
+        </pre>
+      </div>
+
+      <div id="transition" class="step" data-x="42000" data-y="2100" data-rotate="180" data-scale="5">
+        <div class="chart">
+        </div>
+      </div>
+
+      <div id="transition-code" class="step" data-x="42000" data-y="14100" data-rotate="180" data-scale="5">
+        <pre class="code">
+<i>landscape
+   .attr(...)</i>
+   .transition()
+   .duration(1000)
+<i>   .attr(...)</i>
+        </pre>
+      </div>
+
+      <div id="cavern" class="step cave-code" data-x="48000" data-y="26000" data-rotate="180" data-scale="5">
+        <img src="img/cavern.png"/>
+      </div>
+
+      <div id="cave-code" class="step cave-code" data-x="45000" data-y="6000" data-rotate="180" data-scale="5">
+        <pre class="code">
+        svg.selectAll("circle")
+             .data([32, 57, 293])
+           .enter().append("circle")
+             .attr("cy", 90)
+             .attr("cx", function(d) { return d })
+             .attr("r", function(d) {
+               return Math.sqrt(d)
+             })
+           .exit().remove();
+        </pre>
+      </div>
+
+      <div id="cave-code-step1" class="step cave-code" data-x="45000" data-y="6000" data-rotate="180" data-scale="5">
+        <pre class="code">
+        svg.selectAll("circle")
+
+
+
+
+
+
+
+
+        </pre>
+      </div>
+
+      <div id="cave-code-step2" class="step cave-code" data-x="45000" data-y="6000" data-rotate="180" data-scale="5">
+        <pre class="code">
+
+             .data([32, 57, 293])
+
+
+
+
+
+
+
+        </pre>
+      </div>
+
+      <div id="cave-code-step3" class="step cave-code" data-x="45000" data-y="6000" data-rotate="180" data-scale="5">
+        <pre class="code">
+
+
+           .enter().append("circle")
+
+
+
+
+
+
+        </pre>
+      </div>
+
+      <div id="cave-code-step4" class="step cave-code" data-x="45000" data-y="6000" data-rotate="180" data-scale="5">
+        <pre class="code">
+
+
+
+             .attr("cy", 90)
+             .attr("cx", function(d) { return d })
+             .attr("r", function(d) {
+               return Math.sqrt(d)
+             })
+
+        </pre>
+      </div>
+
+      <div id="cave-code-step5" class="step cave-code" data-x="45000" data-y="6000" data-rotate="180" data-scale="5">
+        <pre class="code">
+
+
+
+
+
+
+
+
+           .exit().remove();
+        </pre>
+      </div>
+
+      <div id="the-play" class="step" data-x="48000" data-y="0" data-rotate="180" data-scale="5">
+        with a little help from my friends
+      </div>
+
+      <div id="the-play-step1" class="step" data-x="49000" data-y="20000" data-rotate="90" data-scale="5">
+        <pre class="code">
+d3.selectAll("person")
+
+
+
+
+
+
+        </pre>
+      </div>
+      <div id="the-play-step2" class="step" data-x="49000" data-y="20000" data-rotate="90" data-scale="5">
+        <pre class="code">
+
+    .data(data)
+
+
+
+
+
+        </pre>
+      </div>
+      <div id="the-play-step3" class="step" data-x="49000" data-y="20000" data-rotate="90" data-scale="5">
+        <pre class="code">
+
+
+  .enter()
+
+
+
+
+        </pre>
+      </div>
+      <div id="the-play-step4" class="step" data-x="49000" data-y="20000" data-rotate="90" data-scale="5">
+        <pre class="code">
+
+
+          .append("person")
+
+
+
+
+        </pre>
+      </div>
+      <div id="the-play-step5" class="step" data-x="49000" data-y="20000" data-rotate="90" data-scale="5">
+        <pre class="code">
+
+
+
+    .attr("pose", function(d) {
+      return d;
+    })
+
+        </pre>
+      </div>
+      <div id="the-play-step6" class="step" data-x="49000" data-y="20000" data-rotate="90" data-scale="5">
+        <pre class="code">
+
+
+
+
+
+
+  .exit()
+        </pre>
+      </div>
+      <div id="the-play-step7" class="step" data-x="49000" data-y="20000" data-rotate="90" data-scale="5">
+        <pre class="code">
+
+
+
+
+
+
+         .remove();
+        </pre>
+      </div>
+
+      <div id="maze" class="step" data-x="50000" data-y="10000" data-rotate="180" data-scale="5">
+        <div class="chart"></div>
+      </div>
+
+      <div id="fin" class="step" data-x="50000" data-y="3000" data-rotate="180" data-scale="5">
+        <h1>The End</h1>
+
+        <b>Image Credits</b>
+        <ul class="credits">
+          <li>zelda screen: www.avclub.com</li>
+          <li>landscapes: turbosquid.com, cs.brown.edu, daveshort.org, todayandtomorrow.net</li>
+          <li>painter: wikimedia.org</li>
+          <li>alchemist: wikimedia.org</li>
+          <li>dominick, cavern: gnomoria.com</li>
+          <li>the inn: planetminecraft.com</li>
+          <li>hammer: bostichmediakit.com</li>
+        </ul>
+      </div>
+
+      <div id="example1-dom-step1" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+var title = "Data Driven Documents";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </pre>
+        </div>
+      </div>
+
+      <div id="example1-dom-step2" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+
+var data = title.split(" ");
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </pre>
+        </div>
+      </div>
+
+      <div id="example1-dom-step3" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+
+
+var div = d3.select(".left");
+
+
+
+
+
+
+
+
+
+
+
+
+          </pre>
+        </div>
+      </div>
+
+      <div id="example1-dom-step4" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+
+
+
+
+var color = d3.scale.ordinal()
+      .domain([0,1,2])
+      .range(['yellow','white','dodgerblue']);
+
+
+
+
+
+
+
+
+          </pre>
+        </div>
+      </div>
+
+      <div id="example1-dom-step5" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+
+
+
+
+
+
+
+
+div.selectAll("p")
+
+
+
+
+
+
+          </pre>
+        </div>
+      </div>
+
+      <div id="example1-dom-step6" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+
+
+
+
+
+
+
+
+
+  .data(data)
+
+
+
+
+
+          </pre>
+        </div>
+      </div>
+
+      <div id="example1-dom-step7" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+
+
+
+
+
+
+
+
+
+
+  .enter().append("p")
+
+
+
+
+          </pre>
+        </div>
+      </div>
+
+      <div id="example1-dom-step8" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+
+
+
+
+
+
+
+
+
+
+
+  .text(function(d) { return d })
+  .attr('style', function(d,i) {
+    return 'background-color: '+color(i)
+  });
+          </pre>
+        </div>
+      </div>
+
+      <div id="example1-dom" class="step example1" data-x="54000" data-y="6000" data-rotate="180" data-scale="5">
+        <div class="left"></div>
+        <div class="right">
+          <pre class="code">
+var title = "Data Driven Documents";
+var data = title.split(" ");
+var div = d3.select(".left");
+
+var color = d3.scale.ordinal()
+      .domain([0,1,2])
+      .range(['yellow','white','dodgerblue']);
+
+div.selectAll("p")
+  .data(data)
+  .enter().append("p")
+  .text(function(d) { return d })
+  .attr('style', function(d,i) {
+    return 'background-color: '+color(i)
+  });
+          </pre>
+        </div>
+      </div>
+
+
+      <div id="example2-chart-step1" class="step example2" data-x="57000" data-y="3000" data-rotate="90" data-scale="5">
+        <div class="left"></div>
+        <div class="right" style="display:none">
+          <pre class="code">
+var data = [{
+  "Denver": 0.51,
+  "Portland": 5.07
+},...];
+          </pre>
+        </div>
+      </div>
+
+      <div id="example2-chart-step2" class="step example2" data-x="57000" data-y="3000" data-rotate="90" data-scale="5">
+        <div class="left"></div>
+        <div class="right" style="display:none">
+          <pre class="code">
+var width = d3.scale.linear()
+              .domain([0, 6])
+              .range([0, 500]);
+
+var y = d3.scale.linear()
+             .domain([0, 11])
+             .range([52, 680]);
+          </pre>
+        </div>
+      </div>
+
+      <div id="example2-chart-step3" class="step example2" data-x="57000" data-y="3000" data-rotate="90" data-scale="5">
+        <div class="left"></div>
+        <div class="right" style="display:none">
+          <pre class="code">
+var xAxis = d3.svg.axis()
+              .scale(width)
+              .orient('top')
+              .ticks(7);
+
+svg.append('g')
+   .attr('class', 'x axis')
+   .attr('transform',
+         'translate('+margin.left+','+
+                     (margin.top-2)+')')
+   .call(xAxis);
+          </pre>
+        </div>
+      </div>
+
+      <div id="example2-chart-step4" class="step example2" data-x="57000" data-y="3000" data-rotate="90" data-scale="5">
+        <div class="left"></div>
+        <div class="right" style="display:none">
+          <pre class="code">
+  svg.append('g')
+    .attr('class', 'grid')
+    .attr('transform',
+          'translate('+margin.left+','+
+                      (margin.top-2)+')')
+    .call(xAxis.tickSize(-h, 0, 0)
+               .tickFormat(''));
+          </pre>
+        </div>
+      </div>
+
+      <div id="example2-chart-step5" class="step example2" data-x="57000" data-y="3000" data-rotate="90" data-scale="5">
+        <div class="left"></div>
+        <div class="right" style="display:none">
+          <pre class="code">
+svg.selectAll("rect.denver")
+  .data(data)
+  .enter().append("rect")
+  .attr('class', 'denver')
+  .attr('x', margin.left)
+  .attr('y', function(d, i) {
+    return y(i) - (barHeight + 1)
+  })
+  .attr('height', barHeight)
+  .attr('width', function(d, i) {
+    return width(d.Denver)
+  })
+  .attr('fill', 'red');
+          </pre>
+        </div>
+      </div>
+
+      <div id="example2-chart-step6" class="step example2" data-x="57000" data-y="3000" data-rotate="90" data-scale="5">
+        <div class="left"></div>
+        <div class="right" style="display:none">
+          <pre class="code">
+  svg.selectAll("rect.portland")
+    .data(data)
+    .enter().append("rect")
+    .attr('class', 'portland')
+    .attr('x', margin.left)
+    .attr('y', function(d, i) {
+      return y(i) + 1;
+    })
+    .attr('height', barHeight)
+    .attr('width', function(d, i) {
+      return width(d.Portland)
+    })
+    .attr('fill', 'blue');
+          </pre>
+        </div>
+      </div>
+
+      <div id="example2-chart" class="step example2" data-x="57000" data-y="3000" data-rotate="90" data-scale="5">
+        <div class="left"></div>
+        <div class="right" style="display:none">
+        </div>
+      </div>
+    </div>
+
+    <script src="js/impress.js"></script>
+    <script src="js/d3.v2.min.js"></script>
+    <script src="js/callbacks.js"></script>
+  </body>
+</html>

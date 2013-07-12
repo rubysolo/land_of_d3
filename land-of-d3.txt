@@ -1,0 +1,269 @@
+[slide]
+Once upon a time, there was a land where everything was made of data.  The
+ground and rocks, trees and hills were all data, arranged in different
+configurations.  Nothing but data, as far as the eye could see in any direction.
+
+It was a dangerous and scary land, for on the surface, all the data was nearly
+indistinguishable.  Without careful scrutiny, discerning between a grassy meadow
+and a steep cliff was difficult at best.  The land was crisscrossed with
+crevices, riddled with ravines, and pitted with ... pitfalls.
+
+[slide]
+In this land was a small village, and in the village were various guilds of
+workers.  One of the guilds was the builders who worked on building the houses
+and other buildings in the town.  While it's true that these structures were
+made of data, the data was processed before it reached the builders.  Ore was
+mined from the ground and smelted into metals, trees were hewn, quarter sawn,
+and rough finished into lumber, etc.  But increasingly, the builders needed to
+incorporate raw data into their buildings.
+
+Various tools and techniques had been developed to work with the unfinished data
+to make it visible and presentable to the average townsperson, but they all
+seemed to bypass the hammers, saws, and planes of the builders in favor of
+unfamiliar items:
+
+[slide]
+The painters guild had produced a contraption that mixed the data with paints
+and squirted it onto a *canvas*,
+
+[slide]
+while the alchemists touted secret formulas that, when mixed just right, would
+produce a *flash* of light that illuminated the data, but these techniques were
+foreign to the builders.
+
+[slide]
+Our story begins with DOMinick the brave, a stout-hearted builder who was
+beginning to despair of finding a solution for working as productively with pure
+data as with the processed stuff.
+
+[slide]
+One evening, after a particularly frustrating day of working on a mural for his
+latest building project, he went to a local inn for supper.  He struck up a
+conversation with a traveller seated at his table, and talk shifted to his
+unfortunate plight.  The stranger listened intently to his tale of woe, and
+DOMinick was somewhat annoyed to see a look of -- could it be amusement? -- in
+his eyes.  After the conversation trailed off, and pipes had been smoked, the
+traveller reached into his pack and produced an odd-shaped
+
+[slide]
+hammer, handing it to our hero.  Etched into the handle were the letters "NVD3".
+
+    = NVD3
+
+    NVD3 is a wrapper around D3, giving you several "canned" implementations of
+    common chart types in D3.  Unlike a "from scratch" D3 graph, you don't have
+    to draw individual chart components like rectangles or paths, you can just
+    plug in your data and get back a rendered chart.  Think of it as a gateway
+    drug to D3.
+
+DOMinick held the tool, and the heft and fine craftsmanship pleased him.  It seemed
+to "just fit" in his hand, and the balance seemed nearly perfect.  "You may keep
+this", the stranger said, "for there are many like it and better in the land to
+which I go."  DOMinick protested, but finally relented and accepted the generous
+gift.  Their conversation lasted long into the night, and the two talked of
+literate interfaces, CSS selectors, and data mapping functions.
+
+The next morning, NVD3 proved to be every bit the fine tool as it appeared.  For
+the next few days, NVD3 was DOMinick's hammer, and he was on the hunt for nails.
+But the stranger's mention of "better tools" nagged at the periphery of his
+thoughts.  Also, the more he used his new tool, the closer to its limits he got.
+Eventually, his visualization need did not fit any of the NVD3 charts.  This was
+the tipping point, and DOMinick decided to go on a quest and find the land from
+the stranger's stories.  He went home and packed his gear to begin his quest.
+
+[slide]
+Ah, life on the road, living out of a pack and sleeping under the stars.  The
+extra exersion from walking increased his appetite, and he ate hearty meals
+beside the campfire.  Each morning, he awoke eager to continue his quest.  It
+was slow going at first, as he picked his path carefully to avoid obstacles, but
+he noticed that the shape of the raw data of the landscape was becoming more
+visible the further he went!
+
+[slide]
+After a few days into the journey, DOMinick encountered the first obstacle: a sheer
+cliff face towering into the haze.  Stretching as far as the eye could see to
+either side, it was apparent that *scaling* this wall was his only option.
+
+[slide]
+    = D3 Scales
+
+    A scale in D3 generates a function you can use to transform incoming data
+    from your dataset into some feature in your visualization (e.g. dimension,
+    color, orientation, etc).  Suppose you know that your data contains values
+    from 0 to 1, and you wish to represent these as vertical bars with a height
+    between 0 and 500, proportional to the input value.  Borrowing from
+    Mathematical parlance, you would say that the _domain_ of your scale
+    function was [0, 1] and the _range_ is [0, 500].
+
+    Conceptually, a D3 scale works something like this:
+
+[slide]
+        function scale(domainMax, rangeMax) {
+          return function(inputValue) {
+            return (inputValue / domainMax) * rangeMax;
+          }
+        }
+
+        height = scale(1, 500);
+        height(0.5); // => 250
+
+    Except the D3 version handles arbitrary minimum values, rebinding domain and
+    range to create derived scales, and much more.  Here's what our example would
+    look like in D3:
+
+[slide]
+        height = d3.scale.linear().
+                   .domain([0, 1])
+                   .range([0, 500]);
+
+        height(0.5); // => 250
+
+    Scales can also be different shapes, and can also be used to generate color
+    gradients based on data values.
+
+Armed with the understanding of linear scales, DOMinick made a quick estimate of
+the height of the cliff face and generated a scale with a domain as high as he
+could step and a range as high as the cliff.  He took the step and waited for
+the scale to lift him to the top.  To his amazement, he ended up at the bottom
+of the cliff, right where he started!
+
+[slide]
+    = "Reverse" coordinates
+
+    The coordinate system in D3 starts from the upper left corner, with x increasing
+    to the right, and y increasing downwards, while bar and line charts typically
+    have the opposite orientation -- increasing values growing toward the top of the
+    chart.
+
+After a bit of head-scratching, our hero hit on a bright idea and reversed the
+numbers in the range:
+
+[slide]
+    height2 = height.range([500, 0])
+
+Applying his steps to the new scale, he ended up atop the cliff and ready to
+continue his quest.
+
+[slide]
+For several days, he continued into the land of D3, over rolling hills and
+across meadows.  The sun warmed his back during the day, and he slept soundly
+each night.  The farther he walked, the easier it became, as the landscape was
+more and more visible.
+
+One afternoon, he spied a group of wagons and tents set up just across the
+plain.  As he approached, he saw that it was a group of travelling minstrels,
+and he was just in time for the show.  He *entered* the show tent, ready to
+experience this *event*.  The minstrels employed a call-and-response singing style, very
+similar to the jQuery frontenders back in the village!  As they sang and acted,
+they danced around the stage in intricate, choreographed paths.
+
+    = Event Handling
+
+    To add some interactivity to your visualization, D3 provides event handling.
+    Chain an "on" function to your selection, specify the event name you want to
+    handle, and give it a handler function.
+
+    [slide]
+    selection
+      .on("mouseover", function(d,i) {
+        d3.select(this).attr('fill', 'red');
+      })
+      .on("mouseout", function(d,i) {
+        d3.select(this).attr('fill', 'green');
+      })
+
+DOMinick enjoyed the show quite a lot.  The biggest difference between the D3
+minstrels and the jQuery frontenders was that the minstrels really seemed to
+perform for the love of it, while the jQueryers were obviously in it for the
+money -- every action they took had $ in mind!
+
+He thanked the performers and turned to go, when one of them stopped him.  "It's
+dangerous to go alone", she said.  "Take this!"  And she handed him a book
+entitled "D3 for Travelling Minstrels".  DOMinick politely smiled, and thanked
+her, but he wasn't that interested in singing, so he put the book in the bottom
+of his pack and continued on his journey.
+
+[slide]
+Gradually the landscape became more beautiful and strange, as he jumped over
+discontinuities, scrambled over local maxima and trudged through local minima.
+
+    = Transitions
+
+    D3 supports animating most attributes of your visualization via transitions.
+    To set up an animation, set the initial attributes, then call the transition
+    function, then duration, and finally, set the ending attribute values.  D3
+    will take care of "tweening" -- generating all the "in between" values for
+    you.
+
+[slide]
+    landscape.transition().duration(10).attr("fill", "brown")
+
+He began to sense that he was close to the center of D3.  The terrain was all
+but visible now, and yet he could tell that he was missing something.  It began to
+drizzle as evening approached.  Up ahead, he saw the mouth of a cave which might
+afford some shelter for the night.  As he clambered over the rocks, a noise
+began to grow louder above him.  Glancing up, he saw an avalanche crashing down
+the mountainside!  Scrambling into the cave, he was safe, but trapped inside.
+
+Pushing back panic, he fumbled in his pack for his tinderbox and candle.
+Working blind, it took a few tries, but he finally managed to catch a spark and
+get the candle lit.  He tried moving the stones at the mouth of the cave, but
+they were much to big for him to manage alone, so he began to explore deeper
+into the cavern.  The passageway soon opened up, and he saw the evidence of
+mining, as numerous tunnels and shafts opened from the main chamber.  How would
+he ever find his way out?
+
+[slide]
+To one side of the room, he noticed what looked like some mining supplies and
+equipment, so he hastened in that direction, as his candle was burning low by
+now.  He rummaged around and found a torch, which he lit.  By its guttering
+light, he found other odds and ends, including a notebook filled with spidery
+handwritten text.  As he thumbed through the pages, he found numerous
+inscriptions of path names, followed by pairs of numbers.  There was an entry
+entitled "Alternate Exit", along with the coordinates for the path that could
+lead him back to the surface, but he couldn't decypher them on his own.  There
+had been something in the minstrel show about paths, hadn't there, as they moved
+around the stage?  He didn't quite get it at the time, but maybe there was
+something in that book that could help.  He had nothing better to do, so he
+settled back to read...
+
+    = D3 Stage metaphor
+
+    To understand the core D3 metaphor, visualize a stage in a theater.  For
+a particular scene, there are a number of parts or roles that need to be played
+(these are the elements of your dataset).  There is also a group of actors
+(these are the DOM elements) ready to play the parts.  You are the stage
+manager, and you use D3 to help you direct the actors on and off the stage.
+
+Start with the *selectAll* function, which uses a CSS selector and gives
+you access to the set of actors (DOM Elements) that are already on the stage so
+that you can give them directions as a group.
+
+Calling the *data* function and passing in your dataset first assigns a data
+element to each onstage actor, reserving any leftover roles for later.
+
+In some scene transitions, when there are more parts (Data elements) in the new
+scene than onstage actors.  The *enter* function gives you the set of data
+elements that are left over, then the *append* function creates a DOM element
+for each of these data elements and sends the actor onto the stage.
+
+In other scene transitions, after all the parts have been assigned, there are
+actors left on stage who do not have a part to play.  The *exit* function gives
+you access to this group of actors, and the *remove* function whisks them off
+the stage.
+
+... audience participation ...
+
+As DOMinick reached the end of the book, he realized how he could escape.  Using
+the coordinates, he prepared a visualization that acted as a map to guide him
+through the tunnels to an alternate entrance.  He realized that he could now see
+every nuance of the landscape around him, and his quest was complete, but he now
+had a deep appreciation for the land of D3.  Rather than returning to his
+village, he set up a small outfitter and guide camp, and assisted other builders
+on their own quests.
+
+- fin -
+
+Example 1:  DOM manipulation
+
+Example 1:  Rainfall barchart
