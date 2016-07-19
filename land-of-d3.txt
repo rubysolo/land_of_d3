@@ -73,7 +73,7 @@ the stranger's stories.  He went home and packed his gear to begin his quest.
 
 [slide]
 Ah, life on the road, living out of a pack and sleeping under the stars.  The
-extra exersion from walking increased his appetite, and he ate hearty meals
+extra exertion from walking increased his appetite, and he ate hearty meals
 beside the campfire.  Each morning, he awoke eager to continue his quest.  It
 was slow going at first, as he picked his path carefully to avoid obstacles, but
 he noticed that the shape of the raw data of the landscape was becoming more
@@ -151,11 +151,11 @@ each night.  The farther he walked, the easier it became, as the landscape was
 more and more visible.
 
 One afternoon, he spied a group of wagons and tents set up just across the
-plain.  As he approached, he saw that it was a group of travelling minstrels,
+plain.  As he approached, he saw that it was a group of traveling minstrels,
 and he was just in time for the show.  He *entered* the show tent, ready to
 experience this *event*.  The minstrels employed a call-and-response singing style, very
-similar to the jQuery frontenders back in the village!  As they sang and acted,
-they danced around the stage in intricate, choreographed paths.
+similar to Jay Query & the frontenders back in the village!  As they sang and acted,
+they danced around the stage in intricate, choreographed *paths*.
 
     = Event Handling
 
@@ -175,11 +175,11 @@ they danced around the stage in intricate, choreographed paths.
 DOMinick enjoyed the show quite a lot.  The biggest difference between the D3
 minstrels and the jQuery frontenders was that the minstrels really seemed to
 perform for the love of it, while the jQueryers were obviously in it for the
-money -- every action they took had $ in mind!
+money -- every action they took started with dollar signs!
 
 He thanked the performers and turned to go, when one of them stopped him.  "It's
 dangerous to go alone", she said.  "Take this!"  And she handed him a book
-entitled "D3 for Travelling Minstrels".  DOMinick politely smiled, and thanked
+entitled "D3 for Traveling Minstrels".  DOMinick politely smiled, and thanked
 her, but he wasn't that interested in singing, so he put the book in the bottom
 of his pack and continued on his journey.
 
@@ -221,7 +221,7 @@ light, he found other odds and ends, including a notebook filled with spidery
 handwritten text.  As he thumbed through the pages, he found numerous
 inscriptions of path names, followed by pairs of numbers.  There was an entry
 entitled "Alternate Exit", along with the coordinates for the path that could
-lead him back to the surface, but he couldn't decypher them on his own.  There
+lead him back to the surface, but he couldn't decipher them on his own.  There
 had been something in the minstrel show about paths, hadn't there, as they moved
 around the stage?  He didn't quite get it at the time, but maybe there was
 something in that book that could help.  He had nothing better to do, so he
@@ -242,7 +242,7 @@ that you can give them directions as a group.
 Calling the *data* function and passing in your dataset first assigns a data
 element to each onstage actor, reserving any leftover roles for later.
 
-In some scene transitions, when there are more parts (Data elements) in the new
+In some scene transitions there are more parts (Data elements) in the new
 scene than onstage actors.  The *enter* function gives you the set of data
 elements that are left over, then the *append* function creates a DOM element
 for each of these data elements and sends the actor onto the stage.
