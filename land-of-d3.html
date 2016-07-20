@@ -81,7 +81,7 @@
 
       <div id="scale-function-d3" class="step" data-x="33000" data-y="6000" data-rotate="90" data-scale="5">
         <pre class="code">
-        height = d3.scale.linear().
+        height = d3.scaleLinear().
                    .domain([0, 1])
                    .range([0, 500])
 
@@ -393,7 +393,7 @@ var div = d3.select(".left");
 
 
 
-var color = d3.scale.ordinal()
+var color = d3.scaleOrdinal()
       .domain([0,1,2])
       .range(['yellow','white','dodgerblue']);
 
@@ -508,7 +508,7 @@ var title = "Data Driven Documents";
 var data = title.split(" ");
 var div = d3.select(".left");
 
-var color = d3.scale.ordinal()
+var color = d3.scaleOrdinal()
       .domain([0,1,2])
       .range(['yellow','white','dodgerblue']);
 
@@ -540,11 +540,11 @@ var data = [{
         <div class="left"></div>
         <div class="right" style="display:none">
           <pre class="code">
-var width = d3.scale.linear()
+var width = d3.scaleLinear()
               .domain([0, 6])
               .range([0, 500]);
 
-var y = d3.scale.linear()
+var y = d3.scaleLinear()
              .domain([0, 11])
              .range([52, 680]);
           </pre>
@@ -635,7 +635,7 @@ svg.selectAll("rect.denver")
     </div>
 
     <script src="js/impress.js"></script>
-    <script src="js/d3.v2.min.js"></script>
+    <script src="js/d3.v4.min.js"></script>
     <script src="js/callbacks.js"></script>
   </body>
 </html>

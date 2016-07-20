@@ -14,11 +14,11 @@ impress.callbacks["cliff"] = function() {
     .attr("width", "500")
     .attr("height", "300");
 
-  var height = d3.scale.linear()
+  var height = d3.scaleLinear()
                  .domain([0, 10])
                  .range([10, 290]);
   //var y = height.range([290, 10]);
-  var y = d3.scale.linear()
+  var y = d3.scaleLinear()
                  .domain([0, 10])
                  .range([290, 10]);
   var barWidth = 30;
@@ -37,8 +37,8 @@ impress.callbacks["cliff"] = function() {
 impress.callbacks["reverse-coordinates"] = function() {
   clearChildren('#reverse-coordinates .chart');
 
-  var x = d3.scale.identity().domain([0,450]);
-  var y = d3.scale.identity().domain([0,300]);
+  var x = d3.scaleIdentity().domain([0,450]);
+  var y = d3.scaleIdentity().domain([0,300]);
 
   var chart = d3.select("#reverse-coordinates .chart")
     .append("svg")
@@ -117,16 +117,13 @@ impress.callbacks["reverse-coordinates"] = function() {
      .attr("y", 100)
      .attr("height", 200)
 
-  var xAxis = d3.svg.axis().scale(x).orient('top');
-  var yAxis = d3.svg.axis().scale(y).orient('left');
+  chart.append('g')
+    .attr("class", "axis")
+    .call(d3.axisTop(x));
 
   chart.append('g')
     .attr("class", "axis")
-    .call(xAxis);
-
-  chart.append('g')
-    .attr("class", "axis")
-    .call(yAxis);
+    .call(d3.axisLeft(y).ticks(5));
 };
 
 impress.callbacks["not-d3-code"] = function() {
@@ -141,15 +138,15 @@ impress.callbacks["transition"] = function() {
     .attr("width", "800")
     .attr("height", "500");
 
-  var xSkew = d3.scale.linear()
+  var xSkew = d3.scaleLinear()
                 .domain([0,4])
                 .range([-350, 350]);
 
-  var yScale = d3.scale.ordinal()
+  var yScale = d3.scaleOrdinal()
                  .domain([0,1,2,3,4])
                  .range([1, 0.8, 0.6, 0.53, 0.5]);
 
-  var yPos = d3.scale.ordinal()
+  var yPos = d3.scaleOrdinal()
                  .domain([0,1,2,3,4])
                  .range([400, 320, 260, 240, 230]);
 
@@ -227,12 +224,12 @@ impress.callbacks["transition"] = function() {
     }
   }
 
-  var line = d3.svg.line()
+  var line = d3.line()
+     .curve(d3.curveLinearClosed)
      .x(function(p) { return p.x })
-     .y(function(p) { return p.y })
-     .interpolate('linear-closed');
+     .y(function(p) { return p.y });
 
-  var slopeShade = d3.scale.linear()
+  var slopeShade = d3.scaleLinear()
                      .domain([-50, -25, 0, 50])
                      .range(['red', 'brown', 'orange', 'green'])
 
@@ -380,10 +377,10 @@ impress.callbacks["maze"] = function() {
         });
       });
 
-      var line = d3.svg.line()
+      var line = d3.line()
+                   .curve(d3.curveLinear)
                    .x(function(s) { return (s.c + 0.5) * sw })
-                   .y(function(s) { return (s.r + 0.5) * sw })
-                   .interpolate('linear');
+                   .y(function(s) { return (s.r + 0.5) * sw });
 
       var route = svg.selectAll("path")
           .data([routeSolution])
@@ -401,7 +398,7 @@ impress.callbacks["example1-dom"] = function() {
   var data = "Data Driven Documents".split(" ");
   var div = d3.select("#example1-dom .left");
 
-  var color = d3.scale.ordinal()
+  var color = d3.scaleOrdinal()
                 .domain([0,1,2])
                 .range(['yellow','white','dodgerblue']);
 
@@ -465,22 +462,17 @@ impress.callbacks["example2-chart-step3"] = function() {
                .attr("height", h)
                .attr("width", w)
       barHeight = 20,
-      width = d3.scale.linear()
+      width = d3.scaleLinear()
                 .domain([0, 6])
                 .range([0, 350])
-      y = d3.scale.linear()
+      y = d3.scaleLinear()
                 .domain([0, 11])
                 .range([52, 680]);
-
-  var xAxis = d3.svg.axis()
-                .scale(width)
-                .orient('top')
-                .ticks(7);
 
   svg.append('g')
     .attr('class', 'x axis')
     .attr('transform', 'translate('+margin.left+','+(margin.top-2)+')')
-    .call(xAxis);
+    .call(d3.axisTop(width).ticks(7));
 }
 
 impress.callbacks["example2-chart-step4"] = function() {
@@ -498,22 +490,22 @@ impress.callbacks["example2-chart-step4"] = function() {
                .attr("height", h)
                .attr("width", w)
       barHeight = 20,
-      width = d3.scale.linear()
+      width = d3.scaleLinear()
                 .domain([0, 6])
                 .range([0, 350])
-      y = d3.scale.linear()
+      y = d3.scaleLinear()
                 .domain([0, 11])
                 .range([52, 680]);
 
-  var xAxis = d3.svg.axis()
-                .scale(width)
-                .orient('top')
-                .ticks(7);
+  // var xAxis = d3.svg.axis()
+  //               .scale(width)
+  //               .orient('top')
+  //               .ticks(7);
 
   svg.append('g')
     .attr('class', 'grid')
     .attr('transform', 'translate('+margin.left+','+(margin.top-2)+')')
-    .call(xAxis.tickSize(-h, 0, 0).tickFormat(''));
+    .call(d3.axisTop(width).ticks(7).tickSize(-h, 0, 0).tickFormat(''));
 }
 
 impress.callbacks["example2-chart-step5"] = function() {
@@ -530,10 +522,10 @@ impress.callbacks["example2-chart-step5"] = function() {
                .attr("height", h)
                .attr("width", w)
       barHeight = 20,
-      width = d3.scale.linear()
+      width = d3.scaleLinear()
                 .domain([0, 6])
                 .range([0, 350])
-      y = d3.scale.linear()
+      y = d3.scaleLinear()
                 .domain([0, 11])
                 .range([52, 680]);
 
@@ -564,10 +556,10 @@ impress.callbacks["example2-chart-step6"] = function() {
                .attr("height", h)
                .attr("width", w)
       barHeight = 20,
-      width = d3.scale.linear()
+      width = d3.scaleLinear()
                 .domain([0, 6])
                 .range([0, 350])
-      y = d3.scale.linear()
+      y = d3.scaleLinear()
                 .domain([0, 11])
                 .range([52, 680]);
 
@@ -597,27 +589,27 @@ impress.callbacks["example2-chart"] = function() {
                .attr("height", h)
                .attr("width", w)
       barHeight = 20,
-      width = d3.scale.linear()
+      width = d3.scaleLinear()
                 .domain([0, 6])
                 .range([0, 350])
-      y = d3.scale.linear()
+      y = d3.scaleLinear()
                 .domain([0, 11])
                 .range([52, 680]);
 
-  var xAxis = d3.svg.axis()
-                .scale(width)
-                .orient('top')
-                .ticks(7);
+  // var xAxis = d3.svg.axis()
+  //               .scale(width)
+  //               .orient('top')
+  //               .ticks(7);
 
   svg.append('g')
     .attr('class', 'x axis')
     .attr('transform', 'translate('+margin.left+','+(margin.top-2)+')')
-    .call(xAxis);
+    .call(d3.axisTop(width).ticks(7));
 
   svg.append('g')
     .attr('class', 'grid')
     .attr('transform', 'translate('+margin.left+','+(margin.top-2)+')')
-    .call(xAxis.tickSize(-h, 0, 0).tickFormat(''));
+    .call(d3.axisTop(width).ticks(7).tickSize(-h, 0, 0).tickFormat(''));
 
   svg.selectAll("rect.denver")
     .data(rainfallData)
