@@ -6,6 +6,8 @@ impress.callbacks["bad-puns"] = function() {
   d3.select("#bad-puns .warning").attr("style", "");
 };
 
+d3.select('#currentYear').text((new Date()).getFullYear())
+
 impress.callbacks["cliff"] = function() {
   clearChildren('#cliff .chart');
 
@@ -93,7 +95,7 @@ impress.callbacks["reverse-coordinates"] = function() {
      .attr("stroke", "red")
      .attr("stroke-width", 3)
      .attr("marker-end", 'url(#triangle)')
-     .transition().duration(10000)
+     .transition().duration(15000)
      .attr("x2", 375)
 
   chart.append("line")
@@ -103,7 +105,7 @@ impress.callbacks["reverse-coordinates"] = function() {
      .attr("stroke", "red")
      .attr("stroke-width", 3)
      .attr("marker-end", 'url(#triangle)')
-     .transition().duration(10000)
+     .transition().duration(15000)
      .attr('y2', 275)
 
   chart.append("rect")
@@ -113,7 +115,7 @@ impress.callbacks["reverse-coordinates"] = function() {
      .attr("height", 75)
      .attr("stroke", '#003366')
      .attr("fill", '#3399CC')
-     .transition().duration(10000)
+     .transition().duration(15000)
      .attr("y", 100)
      .attr("height", 200)
 
