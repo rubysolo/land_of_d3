@@ -564,9 +564,7 @@ var y = d3.scaleLinear()
         <div class="left"></div>
         <div class="right" style="display:none">
           <pre class="code">
-var xAxis = d3.svg.axis()
-              .scale(width)
-              .orient('top')
+var xAxis = d3.axisTop(width)
               .ticks(7);
 
 svg.append('g')
